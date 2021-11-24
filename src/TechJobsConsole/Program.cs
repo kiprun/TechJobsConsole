@@ -8,6 +8,7 @@ namespace TechJobsConsole
         static void Main(string[] args)
         {
             // Create two Dictionary vars to hold info for menu and data
+           
 
             // Top-level menu options
             Dictionary<string, string> actionChoices = new Dictionary<string, string>();
@@ -22,7 +23,11 @@ namespace TechJobsConsole
             columnChoices.Add("position type", "Position Type");
             columnChoices.Add("all", "All");
 
+            
+
             Console.WriteLine("Welcome to LaunchCode's TechJobs App!");
+
+            
 
             // Allow user to search/list until they manually quit with ctrl+c
             while (true)
@@ -118,7 +123,16 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            foreach (Dictionary<string, string> job in someJobs)
+            {
+                Console.WriteLine("******");
+                foreach (KeyValuePair<string, string> info in job)
+                {
+                   Console.WriteLine($"{info.Key}: {info.Value}");
+                };
+                Console.WriteLine("******\n");
+            }
+               // Console.WriteLine("PrintJobs is not implemented yet");  
         }
     }
 }
