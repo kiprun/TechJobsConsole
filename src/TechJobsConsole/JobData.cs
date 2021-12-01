@@ -61,23 +61,20 @@ namespace TechJobsConsole
         {
             LoadData();
             List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
-
-            foreach (Dictionary<string, string> row in AllJobs)
             {
-                foreach (KeyValuePair<string, string> itemline in row)
+                foreach (Dictionary<string, string> row in AllJobs)
                 {
-                    if (itemline.Value.ToLower().Contains(value.ToLower()))
+                    foreach (KeyValuePair<string, string> item in row)
                     {
-                        if (!list.Contains(row))
-                            list.Add(row);
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No results found");
+                        if (item.Value.ToLower().Contains(value.ToLower()))
+                        {
+                            if (!list.Contains(row))
+                                list.Add(row);
+                        }
                     }
                 }
+                return list;
             }
-            return list;
         }
 
         /*
