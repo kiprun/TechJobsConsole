@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="job_data.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

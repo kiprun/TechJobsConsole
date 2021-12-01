@@ -63,20 +63,25 @@ namespace TechJobsConsole
                     Console.WriteLine("\nSearch term: ");
                     string searchTerm = Console.ReadLine();
 
-                    List<Dictionary<string, string>> searchResults;
+                    List<Dictionary<string, string>> jobSearchResults;
 
                     // Fetch results
-                    if (columnChoice.Equals("all"))
+                    if (columnChoice.Equals("all") || columnChoice.Equals("employer") 
+                        || columnChoice.Equals("location") || columnChoice.Equals("core competency")
+                        || columnChoice.Equals("position type"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        jobSearchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(jobSearchResults);                        
                     }
-                    else
+                    else 
                     {
-                        searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
-                        PrintJobs(searchResults);
+                        jobSearchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);                        
+                        PrintJobs(jobSearchResults);
+                        
                     }
                 }
             }
+
         }
 
         /*

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Text;
 
 namespace TechJobsConsole
@@ -33,7 +32,7 @@ namespace TechJobsConsole
                 if (!values.Contains(aValue))
                 {
                     values.Add(aValue);
-                }
+                }              
             }
             return values;
         }
@@ -56,6 +55,29 @@ namespace TechJobsConsole
             }
 
             return jobs;
+        }
+
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            LoadData();
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                foreach (KeyValuePair<string, string> itemline in row)
+                {
+                    if (itemline.Value.ToLower().Contains(value.ToLower()))
+                    {
+                        if (!list.Contains(row))
+                            list.Add(row);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("No results found");
+                    }
+                }
+            }
+            return list;
         }
 
         /*
